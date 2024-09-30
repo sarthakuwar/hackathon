@@ -1,97 +1,95 @@
-import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+import { Separator } from "@/components/ui/separator"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { Separator } from "@/components/ui/separator"
+import { Button } from "@/components/ui/button"
 
 export default function Component() {
   return (
-    <Card className="w-full max-w-3xl mx-auto">
-      <CardHeader>
-        <div className="flex items-center justify-between">
+    <div className="w-full max-w-3xl mx-auto p-4 md:p-6 lg:p-8">
+      <div className="bg-background rounded-lg text-black shadow-lg overflow-hidden">
+        <div className="bg-secondary border-2 py-6 px-4 md:px-6 lg:px-8">
           <div className="flex items-center gap-4">
-            <Avatar className="w-16 h-16">
-              <AvatarImage src="/placeholder-user.jpg" alt="User Avatar" />
+            {/* <Avatar className="w-16 h-16 md:w-20 md:h-20">
+              <AvatarImage src="/placeholder-user.jpg" alt="Patient Avatar" />
               <AvatarFallback>JD</AvatarFallback>
-            </Avatar>
-            <div className="grid gap-1">
-              <h2 className="text-2xl font-bold">John Doe</h2>
-              <div className="text-muted-foreground">
-                <span className="font-medium">Age:</span> 78
+            </Avatar> */}
+            <img src={`https://api.dicebear.com/9.x/pixel-art/svg?seed=sarthak`} className="w-[50px] h-[50px]" alt="" />
+            <div className="flex-1">
+              <h1 className="text-2xl font-bold text-primary-foreground text-black">John Doe</h1>
+              <p className="text-sm text-primary-foreground text-black">john.doe@example.com</p>
+            </div>
+          </div>
+        </div>
+        <div className="p-4 md:p-6 lg:p-8 space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <MapPinIcon className="w-5 h-5 text-muted-foreground" />
+                <div>
+                  <p className="text-sm font-medium">Address</p>
+                  <p className="text-base text-muted-foreground">123 Main St, Anytown USA</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <CrossIcon className="w-5 h-5 text-muted-foreground" />
+                <div>
+                  <p className="text-sm font-medium">Medical Issues</p>
+                  <p className="text-base text-muted-foreground">Diabetes, High Blood Pressure</p>
+                </div>
+              </div>
+            </div>
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <GroupIcon className="w-5 h-5 text-muted-foreground" />
+                <div>
+                  <p className="text-sm font-medium">Gender</p>
+                  <p className="text-base text-muted-foreground">Male</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <CalendarIcon className="w-5 h-5 text-muted-foreground" />
+                <div>
+                  <p className="text-sm font-medium">Age</p>
+                  <p className="text-base text-muted-foreground">65</p>
+                </div>
               </div>
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <Button variant="outline">Edit Profile</Button>
-            <Button>Contact Nurse</Button>
-          </div>
-        </div>
-      </CardHeader>
-      <CardContent className="grid gap-6">
-        <div className="flex flex-row justify-evenly">
-          <div className="">
-            <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" defaultValue="john.doe@example.com" disabled />
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="gender">Gender</Label>
-            <Select id="gender" defaultValue="male" disabled>
-              <SelectTrigger>
-                <SelectValue placeholder="Select gender" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="male">Male</SelectItem>
-                <SelectItem value="female">Female</SelectItem>
-                <SelectItem value="other">Other</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="grid gap-2">
-            <Label htmlFor="address">Address</Label>
-            <Textarea id="address" defaultValue="123 Main St, Anytown USA" />
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="medical-issues">Medical Issues</Label>
-            <Textarea id="medical-issues" defaultValue="Arthritis, High Blood Pressure" />
-          </div>
-        </div>
-        <Separator />
-        <div className="grid gap-4">
-          <div className="flex items-center justify-between">
-            <h3 className="text-lg font-medium">Assigned Nurse</h3>
-            <Button variant="outline" size="sm">
-              Change Nurse
-            </Button>
-          </div>
-          <div className="flex items-center gap-4">
-            <Avatar className="w-12 h-12">
-              <AvatarImage src="/placeholder-user.jpg" alt="Nurse Avatar" />
-              <AvatarFallback>JD</AvatarFallback>
-            </Avatar>
-            <div className="grid gap-1">
-              <div className="font-medium">Jane Doe, RN</div>
-              <div className="text-muted-foreground">
-                <PhoneIcon className="w-4 h-4 mr-1 inline" />
-                +1 (555) 555-5555
-              </div>
+            <HospitalIcon className="w-5 h-5 text-muted-foreground" />
+            <div>
+              <p className="text-sm font-medium">Assigned Nurse</p>
+              <p className="text-base text-muted-foreground">Jane Smith, RN</p>
             </div>
           </div>
+          <Separator />
+          <div className="space-y-4">
+            <h2 className="text-xl font-bold">Edit Profile</h2>
+            <form className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="address">Address</Label>
+                  <Input id="address" defaultValue="123 Main St, Anytown USA" className="text-base" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="medical-issues">Medical Issues</Label>
+                  <Textarea id="medical-issues" defaultValue="Diabetes, High Blood Pressure" className="text-base" />
+                </div>
+              </div>
+              <Button type="submit" className="w-full">
+                Save Changes
+              </Button>
+            </form>
+          </div>
         </div>
-      </CardContent>
-      <CardFooter className="flex justify-end gap-2">
-        <Button variant="outline">Cancel</Button>
-        <Button type="submit">Save Changes</Button>
-      </CardFooter>
-    </Card>
+      </div>
+    </div>
   )
 }
 
-function PhoneIcon(props) {
+function CalendarIcon(props) {
   return (
     <svg
       {...props}
@@ -105,7 +103,101 @@ function PhoneIcon(props) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+      <path d="M8 2v4" />
+      <path d="M16 2v4" />
+      <rect width="18" height="18" x="3" y="4" rx="2" />
+      <path d="M3 10h18" />
+    </svg>
+  )
+}
+
+
+function CrossIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M11 2a2 2 0 0 0-2 2v5H4a2 2 0 0 0-2 2v2c0 1.1.9 2 2 2h5v5c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2v-5h5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-5V4a2 2 0 0 0-2-2h-2z" />
+    </svg>
+  )
+}
+
+
+function GroupIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M3 7V5c0-1.1.9-2 2-2h2" />
+      <path d="M17 3h2c1.1 0 2 .9 2 2v2" />
+      <path d="M21 17v2c0 1.1-.9 2-2 2h-2" />
+      <path d="M7 21H5c-1.1 0-2-.9-2-2v-2" />
+      <rect width="7" height="5" x="7" y="7" rx="1" />
+      <rect width="7" height="5" x="10" y="12" rx="1" />
+    </svg>
+  )
+}
+
+
+function HospitalIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M12 6v4" />
+      <path d="M14 14h-4" />
+      <path d="M14 18h-4" />
+      <path d="M14 8h-4" />
+      <path d="M18 12h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h2" />
+      <path d="M18 22V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v18" />
+    </svg>
+  )
+}
+
+
+function MapPinIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+      <circle cx="12" cy="10" r="3" />
     </svg>
   )
 }
