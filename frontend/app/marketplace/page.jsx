@@ -88,10 +88,7 @@ function Component() {
   return (
     <div className="container w-[90vw] mx-auto px-4 py-8 text-lg bg-gradient-to-b from-blue-50 to-zinc-100">
       <header className="text-center mb-12 header">
-        <h1 className="text-5xl font-bold mb-6 text-zinc-800">Compassionate Care for Your Loved Ones</h1>
-        <p className="text-2xl text-zinc-900">
-          Find a Sahara to provide the best elderly care.
-        </p>
+        <h1 className="text-5xl font-bold mb-6 text-zinc-800">Find a Sahara</h1>
       </header>
 
       <nav className="sticky top-0 bg-zinc-200 z-10 p-4 shadow-md mb-8 rounded-lg nav-tabs">
@@ -134,7 +131,7 @@ function Component() {
             )}
             {currentStep === 2 && (
               <div className="space-y-6">
-                <Label htmlFor="experience" className="text-2xl mb-2 block text-zinc-100">Minimum years of experience?</Label>
+                <Label htmlFor="experience" className="text-2xl mb-2 block text-zinc-900">Minimum years of experience?</Label>
                 <Input
                   id="experience"
                   type="number"
@@ -147,7 +144,7 @@ function Component() {
             )}
             {currentStep === 3 && (
               <div className="space-y-6">
-                <Label htmlFor="location" className="text-2xl mb-2 block text-zinc-100">Preferred location?</Label>
+                <Label htmlFor="location" className="text-2xl mb-2 block text-zinc-900">Preferred location?</Label>
                 <Input
                   id="location"
                   value={filters.location}
@@ -251,9 +248,9 @@ function Component() {
         showProgress={true}
         styles={{
           options: {
-            primaryColor: "#4f46e5",
-            textColor: "#1e40af",
-            backgroundColor: "#e0e7ff",
+            primaryColor: "rgb(24 24 27)",
+            textColor: "rgb(24 24 27)",
+            backgroundColor: "#ffffff",
           },
         }}
         callback={(data) => {
