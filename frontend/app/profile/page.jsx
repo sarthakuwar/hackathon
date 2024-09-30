@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 
 export default function Component() {
   return (
-    <div className="w-full max-w-3xl mx-auto p-4 md:p-6 lg:p-8">
+    <div className="w-full my-[30px] max-w-3xl mx-auto p-4 md:p-6 lg:p-8">
       <div className="bg-background rounded-lg text-black shadow-lg overflow-hidden">
         <div className="bg-secondary border-2 py-6 px-4 md:px-6 lg:px-8">
           <div className="flex items-center gap-4">
