@@ -91,13 +91,8 @@ app.post(
 		const { email } = c.req.valid('json');
 
 		try {
-			const [{ id }] = await db.select({ id: eldersTable.id }).from(eldersTable).where(eq(eldersTable.email, email));
-
-			if (id) {
-				return c.json({ status: true, id: response.id });
-			} else {
-				return c.json({ status: false }, 404);
-			}
+			const [{ email: isEmail }] = await db.select({ email: eldersTable.email }).from(eldersTable).where(eq(eldersTable.email, email));
+			return c.json({ status: isEmail ? true : false }, isEmail ? 200 : 404);
 		} catch (error) {
 			return c.json({ message: 'Internal server error' }, 500);
 		}
