@@ -1,11 +1,19 @@
+"use client"
+
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Separator } from "@/components/ui/separator"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
+import { useSession } from "next-auth/react"
+import { useGetElderProfile } from "../services/queries"
 
 export default function Component() {
+  const { data, status } = useSession();
+  if (!data) return null;
+  const { isSuccess, data: datas } = useGetElderProfile(data.user?.email)
+  console.log(data)
   return (
     <div className="w-full max-w-3xl mx-auto p-4 md:p-6 lg:p-8">
       <div className="bg-background rounded-lg text-black shadow-lg overflow-hidden">
