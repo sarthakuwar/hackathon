@@ -16,7 +16,7 @@ export default function Component() {
     setTasks((prevTasks) => prevTasks.map((task) => (task.id === id ? { ...task, completed: !task.completed } : task)))
   }
   return (
-    <Card>
+    <Card className='bg-red-200 h-[70vh]'>
       <CardHeader>
         <CardTitle>My Tasks</CardTitle>
       </CardHeader>

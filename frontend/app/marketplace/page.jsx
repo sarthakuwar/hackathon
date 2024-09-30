@@ -29,10 +29,10 @@ function Component() {
       content: "Welcome to our Caretaker Marketplace! This is where you can find compassionate care for your loved ones.",
       disableBeacon: true,
     },
-    {
-      target: ".nav-tabs",
-      content: "Use these tabs to navigate between searching for nurses, scheduling appointments, and contacting us.",
-    },
+    // {
+    //   target: ".nav-tabs",
+    //   content: "Use these tabs to navigate between searching for nurses, scheduling appointments, and contacting us.",
+    // },
     {
       target: ".search-card",
       content: "Follow these steps to find your ideal caretaker based on specialization, experience, and location.",
@@ -86,14 +86,14 @@ function Component() {
   const prevStep = () => setCurrentStep(prev => Math.max(prev - 1, 1))
 
   return (
-    <div className="container w-[90vw] mx-auto px-4 py-8 text-lg bg-gradient-to-b from-blue-50 to-zinc-100">
+    <div className="container w-[90vw] mx-auto px-4 my-[80px] py-[30px] text-lg bg-gradient-to-b from-blue-50 to-zinc-100">
       <header className="text-center mb-12 header">
-        <h1 className="text-5xl font-bold mb-6 text-zinc-800">Find a Sahara</h1>
+        <h1 className="text-5xl font-bold mb-6 text-zinc-800">Find your Sahara</h1>
       </header>
 
-      <nav className="sticky top-0 bg-zinc-200 z-10 p-4 shadow-md mb-8 rounded-lg nav-tabs">
-        <Tabs defaultValue="search" className="w-full">
-          <TabsList className="grid w-full grid-cols-3 bg-zinc-900">
+      {/* <nav className="sticky top-0 bg-zinc-200 z-10 p-4 shadow-md mb-8 rounded-lg nav-tabs"> */}
+        {/* <Tabs defaultValue="search" className="w-full"> */}
+          {/* <TabsList className="grid w-full grid-cols-3 bg-zinc-900">
             <TabsTrigger value="search" className="text-lg data-[state=active]:text-zinc-900 data-[state=active]:text-zinc-900">
               <Search className="mr-2 h-5 w-5" /> 
             </TabsTrigger>
@@ -103,9 +103,9 @@ function Component() {
             <TabsTrigger value="contact" className="text-lg data-[state=active]:text-zinc-900 data-[state=active]:text-zinc-900">
               <MessageCircle className="mr-2 h-5 w-5" />    
             </TabsTrigger>
-          </TabsList>
-        </Tabs>
-      </nav>
+          </TabsList> */}
+        {/* </Tabs> */}
+      {/* </nav> */}
 
       <Card className="mb-12 bg-white shadow-lg border-2 border-zinc-200 search-card">
         <CardHeader className="text-zinc-900">
@@ -175,7 +175,7 @@ function Component() {
       </Card>
 
       {filteredNurses.length === 0 ? (
-        <Card className="p-8 text-center bg-white shadow-lg border-2 border-zinc-200">
+        <Card className="p-8 text-center bg-white shadow-lg py-10 border-2 border-zinc-200">
           <CardTitle className="text-2xl text-zinc-800 mb-4">No nurses match the current filters.</CardTitle>
           <CardDescription className="text-xl text-zinc-900">
             Try adjusting your search criteria or contact us for assistance.
@@ -234,7 +234,7 @@ function Component() {
         </div>
       )}
 
-      <div className="fixed bottom-4 right-4">
+      <div className="fixed bottom-[100px] z-10 right-4">
         <Button onClick={() => setRunTour(true)} className="text-zinc-900 hover:bg-zinc-700 text-white">
           Start Tour
         </Button>

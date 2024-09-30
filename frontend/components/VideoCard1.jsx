@@ -15,11 +15,11 @@ const Page = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">YouTube Video Carousel</h1>
+      <h1 className="text-2xl font-bold mb-4">YouTube Video</h1>
 
       {/* Carousel Container */}
         {/* First Card */}
-        <div className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="max-w-auto mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
           <div className="p-6">
             <h2 className="text-xl font-semibold mb-4">Watch this tutorial 1</h2>
             <div className="video-container">

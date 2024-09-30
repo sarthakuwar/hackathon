@@ -15,14 +15,13 @@ export default function Home() {
 
   return (
     <>
-
-      <button className="w-[20vw] m-1 p-2 bg-gray-800 " onClick={() => { signIn() }}>signIn</button>
-      <button className="w-[20vw] m-1 p-2 bg-slate-500 " onClick={() => { signOut() }}>LogOut</button>
-      <div className="flex flex-col justify-center items-center align-middle w-full ">
-        {session ? <span>{session.user?.email}</span> : ""}
-        <CarouselCard />
-        <CarouselVideo />
-      </div>
+    
+<button className="w-[20vw] m-1 p-2 bg-gray-800 " onClick={()=>{signIn()}}>signIn</button>
+{/* <button className="w-[20vw] m-1 p-2 bg-slate-500 " onClick={()=>{signOut()}}>LogOut</button> */}
+<div className="flex flex-col justify-center items-center align-middle w-full ">
+<CarouselCard />
+<CarouselVideo/>
+</div>
 
     </>
   );
