@@ -19,11 +19,12 @@ app.post(
 			experience: z.number(),
 			hourlyRate: z.number(),
 			availability: z.boolean(),
+			location: z.boolean(),
 		})
 	),
 	async (c) => {
 		const db = drizzle(c.env.DB);
-		const { name, email, phoneNumber, experience, hourlyRate, availability } = c.req.valid('json');
+		const { name, email, phoneNumber, experience, hourlyRate, availability, location } = c.req.valid('json');
 
 		try {
 			await db.insert(careTakerTable).values({
@@ -33,6 +34,7 @@ app.post(
 				experience,
 				hourlyRate,
 				availability,
+				location,
 			});
 
 			return c.json({ message: 'Registration Done' });
@@ -42,42 +44,42 @@ app.post(
 	}
 );
 
-app.put(
-	'/data/add',
-	zValidator(
-		'json',
-		z.object({
-			name: z.string().optional(),
-			email: z.string().email(),
-			phoneNumber: z.number().optional(),
-			experience: z.number().optional(),
-			hourlyRate: z.number().optional(),
-			availability: z.boolean().optional(),
-		})
-	),
-	async (c) => {
-		const db = drizzle(c.env.DB);
-		const { name, email, phoneNumber, experience, hourlyRate, availability } = c.req.valid('json');
+// app.put(
+// 	'/data/add',
+// 	zValidator(
+// 		'json',
+// 		z.object({
+// 			name: z.string().optional(),
+// 			email: z.string().email(),
+// 			phoneNumber: z.number().optional(),
+// 			experience: z.number().optional(),
+// 			hourlyRate: z.number().optional(),
+// 			availability: z.boolean().optional(),
+// 		})
+// 	),
+// 	async (c) => {
+// 		const db = drizzle(c.env.DB);
+// 		const { name, email, phoneNumber, experience, hourlyRate, availability } = c.req.valid('json');
 
-		// try {
-		await db
-			.update(careTakerTable)
-			.set({
-				name,
-				email,
-				phoneNumber,
-				experience,
-				hourlyRate,
-				availability,
-			})
-			.where(eq(careTakerTable.email, email));
+// 		try {
+// 			await db
+// 				.update(careTakerTable)
+// 				.set({
+// 					name,
+// 					email,
+// 					phoneNumber,
+// 					experience,
+// 					hourlyRate,
+// 					availability,
+// 				})
+// 				.where(eq(careTakerTable.email, email));
 
-		return c.json({ message: 'Edited Successfully' });
-		// } catch (error) {
-		// 	return c.json({ message: 'Internal server error' }, 500);
-		// }
-	}
-);
+// 			return c.json({ message: 'Edited Successfully' });
+// 		} catch (error) {
+// 			return c.json({ message: 'Internal server error' }, 500);
+// 		}
+// 	}
+// );
 
 app.post(
 	'/data/check',
@@ -150,5 +152,16 @@ app.post(
 		}
 	}
 );
+
+app.get('/all', async (c) => {
+	const db = drizzle(c.env.DB);
+
+	try {
+		const response = await db.select().from(careTakerTable);
+		return c.json(response);
+	} catch (error) {
+		return c.json({ message: 'Internal server error' }, 500);
+	}
+});
 
 export default app;

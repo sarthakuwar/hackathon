@@ -7,6 +7,7 @@ export const careTakerTable = sqliteTable('care_taker', {
 	phoneNumber: integer('phone_number').notNull(),
 	experience: integer('experience').notNull().default(0),
 	hourlyRate: integer('hourly_rate').notNull(),
+	location: text('location').notNull(),
 	availability: integer('hired', { mode: 'boolean' }).default(false),
 	elder: text('elder').references(() => eldersTable.email),
 });

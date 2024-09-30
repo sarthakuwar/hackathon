@@ -7,6 +7,10 @@ const app = new Hono();
 app.route('/elder', elderlyRoute);
 app.route('/caretaker', careTakerRoute);
 
+app.get('/location', async (c) => {
+	return c.json({ location: c.req.raw.cf?.city || 'Mumbai' });
+});
+
 app.get('*', async (c) => {
 	return c.json({
 		message: 'server up and running',
