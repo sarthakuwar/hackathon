@@ -1,5 +1,4 @@
-"use client"
-
+'use client'
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Separator } from "@/components/ui/separator"
 import { Label } from "@/components/ui/label"
@@ -10,10 +9,16 @@ import { useSession } from "next-auth/react"
 import { useGetElderProfile } from "../services/queries"
 
 export default function Component() {
-  const { data, status } = useSession();
-  if (!data) return null;
-  const { isSuccess, data: datas } = useGetElderProfile(data.user?.email)
-  console.log(data)
+  const { data: session, status } = useSession();
+  const { isLoading, isError, data: elderProfile } = useGetElderProfile(session);
+ console.log(elderProfile)
+  
+
+  if (status === "loading") return <div>Loading session...</div>;
+  if (status === "unauthenticated") return <div>Please sign in to access this page</div>;
+
+  if (isLoading) return <div>Loading profile...</div>;
+  if (isError) return <div>Error loading profile</div>;
   return (
     <div className="w-full my-[30px] max-w-3xl mx-auto p-4 md:p-6 lg:p-8">
       <div className="bg-background rounded-lg text-black shadow-lg overflow-hidden">
